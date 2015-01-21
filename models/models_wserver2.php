@@ -14,6 +14,7 @@ class ConfigWServer {
 	/**
 	* This array save the ips from server that have permissions for configure this server.
 	*
+	* The schema is use key how IP and value how wpanel2 url.
 	*/
 
 	static public $arr_server=array();

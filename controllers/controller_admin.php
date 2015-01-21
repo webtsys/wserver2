@@ -26,7 +26,7 @@ class AdminSwitchClass extends ControllerSwitchClass {
 	public function login($token, $return_json=1)
 	{
 	
-		load_libraries(array('autoload'), PhangoVar::$base_path.'modules/wpanel2/vendor/');
+		load_libraries(array('autoload'), PhangoVar::$base_path.'modules/wserver2/vendor/');
 	
 		$arr_token=PhangoVar::$model['wserver_admin']->select_to_array('where wtoken="'.PhangoVar::$model['wserver_admin']->check_where_sql('wtoken', $token).'"');
 		
@@ -49,7 +49,7 @@ class AdminSwitchClass extends ControllerSwitchClass {
 		
 		}
 		
-		if(!in_array($_SERVER['REMOTE_ADDR'], ConfigWServer::$arr_server))
+		if(!isset(ConfigWServer::$arr_server[$_SERVER['REMOTE_ADDR']]))
 		{
 			
 			$yes_login=0;
