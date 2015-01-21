@@ -1,5 +1,5 @@
 *~
 config/*
 vendor/*
-
+composer.lock
 

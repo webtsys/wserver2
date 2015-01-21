@@ -9,9 +9,11 @@ load_model('wserver2');
 
 class AdminSwitchClass extends ControllerSwitchClass {
 
-	public function index()
+	public function execute($token, $controller, $action)
 	{
 	
+		//Here, execute the function.
+		//Parameters are passed via post and is passed to a ControllerSwitchClass
 		
 	
 	}
@@ -23,6 +25,8 @@ class AdminSwitchClass extends ControllerSwitchClass {
 	
 	public function login($token, $return_json=1)
 	{
+	
+		load_libraries(array('autoload'), PhangoVar::$base_path.'modules/wpanel2/vendor/');
 	
 		$arr_token=PhangoVar::$model['wserver_admin']->select_to_array('where wtoken="'.PhangoVar::$model['wserver_admin']->check_where_sql('wtoken', $token).'"');
 		
