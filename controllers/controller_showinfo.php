@@ -6,11 +6,15 @@
 */
 
 load_model('wserver2');
-load_libraries(array('login'));
+load_libraries(array('utilities'));
 
 class ShowInfoSwitchClass extends ControllerSwitchClass {
 
-	public function index($token)
+	/**
+	* This method obtain the token from the server.
+	*/
+
+	public function os($token)
 	{
 	
 		echo login($token);

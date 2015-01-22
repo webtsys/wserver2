@@ -19,6 +19,8 @@ class ConfigWServer {
 
 	static public $arr_server=array();
 	
+	static public $verify_guzzle_ssl=false;
+	
 }
 
 load_config('wserver2');
