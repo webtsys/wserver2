@@ -17,7 +17,22 @@ class ShowInfoSwitchClass extends ControllerSwitchClass {
 	public function os($token)
 	{
 	
-		echo login($token);
+		$json=login($token, 0);
+		
+		if($json['login']==1)
+		{
+		
+			//Execute a script that obtain the data of this system.
+		
+			echo json_encode($json);
+		
+		}
+		else
+		{
+		
+			echo json_encode($json);
+		
+		}
 		
 	
 	}

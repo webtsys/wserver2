@@ -1,7 +1,8 @@
 {
     "require": {
 
-	"guzzlehttp/guzzle": "~5.0"
+	"guzzlehttp/guzzle": "~5.0",
+	"symfony/process": "2.*"
 
     }
 }

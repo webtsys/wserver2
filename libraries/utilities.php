@@ -111,7 +111,7 @@ function login($token, $return_json=1)
 		
 		case 0:
 		
-			return $yes_login;
+			return array('login' => $yes_login, 'code_error' => $error, 'txt_error' => $error_txt);
 		
 		break;
 	
