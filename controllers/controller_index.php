@@ -9,7 +9,7 @@ class IndexSwitchClass extends ControllerSwitchClass {
 
 	public function index()
 	{
-	
+		
 	}
 
 }
