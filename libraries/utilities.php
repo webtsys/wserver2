@@ -67,7 +67,7 @@ function login($token, $return_json=1)
 					else
 					{
 						$yes_login=0;
-						$error=2;
+						$error=1;
 						$error_txt='Cannot insert the new token in the database';
 					
 					}
@@ -83,7 +83,7 @@ function login($token, $return_json=1)
 				
 			} catch (exception $e) {
 			
-				return json_encode(array('login' => 0, 'code_error' =>-1, 'txt_error' => 'Error in central server -> '.$e->getMessage().'<p>'.$response->getBody() ));
+				return json_encode(array('login' => 0, 'code_error' =>1, 'txt_error' => 'Error in central server -> '.$e->getMessage().'<p>'.$response->getBody() ));
 
 			}
 			
