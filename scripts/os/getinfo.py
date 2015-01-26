@@ -6,6 +6,7 @@ import platform
 import json
 import re
 import argparse
+import json
 
 pyv=platform.python_version_tuple()
 
@@ -41,7 +42,7 @@ def search_dir(path, arr_script=[]):
 				arr_script.append(path+'/'+file)
 	except OSError:
 		
-		print({'error': 'No exists the server type '+path})
+		print(json.dumps({'error': 'No exists the server type '+path}))
 		
 		sys.exit(1)
 		
@@ -85,7 +86,7 @@ for cfg in arr_script:
 
 #Load scripts for this type
 
-print({'distribution': distribution, 'machine': machine, 'processor': processor, 'system': system, 'available_modules': arr_config})
+print(json.dumps({'distribution': distribution, 'machine': machine, 'processor': processor, 'system': system, 'available_modules': arr_config}))
 
 
 

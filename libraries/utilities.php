@@ -24,7 +24,7 @@ function login($token, $return_json=1)
 	
 	if(isset(ConfigWServer::$arr_server[$_SERVER['REMOTE_ADDR']]))
 	{
-	
+		
 		$url_server=make_direct_url( ConfigWServer::$arr_server[$_SERVER['REMOTE_ADDR']], 'wpanel2', 'rest/login', array('token_sended' => $token));
 		
 		if($arr_token['IdWserver_admin']>0)
@@ -83,7 +83,7 @@ function login($token, $return_json=1)
 				
 			} catch (exception $e) {
 			
-				return json_encode(array('login' => 0, 'code_error' =>1, 'txt_error' => 'Error in central server -> '.$e->getMessage().'<p>'.$response->getBody() ));
+				return json_encode(array('login' => 0, 'error' =>1, 'error_txt' => 'Error in central server -> '.$e->getMessage().'<p>'.$response->getBody() ));
 
 			}
 			
@@ -105,13 +105,13 @@ function login($token, $return_json=1)
 	
 		default:
 		
-			return json_encode(array('login' => $yes_login, 'code_error' => $error, 'txt_error' => $error_txt));
+			return json_encode(array('login' => $yes_login, 'error' => $error, 'error_txt' => $error_txt));
 		
 		break;
 		
 		case 0:
 		
-			return array('login' => $yes_login, 'code_error' => $error, 'txt_error' => $error_txt);
+			return array('login' => $yes_login, 'error' => $error, 'error_txt' => $error_txt);
 		
 		break;
 	

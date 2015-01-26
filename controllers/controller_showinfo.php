@@ -17,15 +17,16 @@ class ShowInfoSwitchClass extends ControllerSwitchClass {
 	* This method obtain the token from the server.
 	*/
 
-	public function os($token)
+	public function os($token, $server_type)
 	{
+		$server_type=basename($server_type);
 	
 		$json=login($token, 0);
 		
 		if($json['login']==1)
 		{
 			
-			$process = new Process('python3 '.PhangoVar::$base_path.'/modules/wserver2/scripts/os/getinfo.py');
+			$process = new Process('python3 '.PhangoVar::$base_path.'/modules/wserver2/scripts/os/getinfo.py --type '.$server_type);
 			$process->run();
 
 			if (!$process->isSuccessful()) {
@@ -33,10 +34,26 @@ class ShowInfoSwitchClass extends ControllerSwitchClass {
 				$json['error']=1;
 				$json['error_txt']=$process->getErrorOutput();
 			}
-
-			$system_info=$process->getOutput();
-			
-			$json['system_info']=$system_info;
+			else
+			{
+				$system_info=$process->getOutput();
+				
+				$arr_system_info=json_decode($system_info, true);
+				
+				if(isset($arr_system_info['error']))
+				{
+					
+					$json['error']=1;
+					$json['error_txt']=$arr_system_info['error'];
+				
+				}
+				else
+				{
+				
+					$json['system_info']=$arr_system_info;
+					
+				}
+			}
 		
 			echo json_encode($json);
 		
