@@ -28,11 +28,17 @@ class ShowInfoSwitchClass extends ControllerSwitchClass {
 			
 			$process = new Process('python3 '.PhangoVar::$base_path.'/modules/wserver2/scripts/os/getinfo.py --type '.$server_type);
 			$process->run();
-
+			
 			if (!$process->isSuccessful()) {
 				
 				$json['error']=1;
-				$json['error_txt']=$process->getErrorOutput();
+				//$json['error_txt']=json_decode($process->getOutput());
+				
+				$error_txt_normal=json_decode($process->getOutput(), true);
+				$error_txt_error=json_decode($process->getErrorOutput(), true);
+				
+				$json['error_txt']=$error_txt_normal['error'].' '.$error_txt_error['error'];
+				
 			}
 			else
 			{
@@ -73,10 +79,24 @@ class ShowInfoSwitchClass extends ControllerSwitchClass {
 	*
 	*/
 	
-	public function configure_server($token, $server_type, $server_script)
+	public function configure_server()
 	{
 	
+		//Se ejecuta el daemon php
+	
+		$process = new Process('python3 '.PhangoVar::$base_path.'modules/wserver2/controllers/python.py');
 		
+		$process->start();
+		
+		//Write in a file that is loaded by 
+		
+		/*$process->wait(function ($type, $buffer) {
+			if (Process::ERR === $type) {
+				echo 'ERR > '.$buffer;
+			} else {
+				echo 'OUT > '.$buffer;
+			}
+		});*/
 	
 	}
 
