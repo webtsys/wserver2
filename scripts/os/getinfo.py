@@ -18,6 +18,8 @@ if pyv[0]!='3':
 parser = argparse.ArgumentParser(description='Obtain info about the server.')
 
 parser.add_argument('--type', help='The type of server about you need info', required=True)
+parser.add_argument('--os', help='The os of server', required=True)
+parser.add_argument('--version', help='The version of os', required=True)
 
 args = parser.parse_args()
 
@@ -51,7 +53,9 @@ def search_dir(path, arr_script=[]):
 
 # Obtain Linux version
 
-distribution=platform.linux_distribution()
+#distribution=platform.linux_distribution()
+
+distribution=[args.os, args.version]
 
 machine=platform.machine()
 

@@ -26,7 +26,7 @@ class ShowInfoSwitchClass extends ControllerSwitchClass {
 		if($json['login']==1)
 		{
 			
-			$process = new Process('python3 '.PhangoVar::$base_path.'/modules/wserver2/scripts/os/getinfo.py --type '.$server_type);
+			$process = new Process('python3 '.PhangoVar::$base_path.'/modules/wserver2/scripts/os/getinfo.py --type '.$server_type.' --os '.ConfigWServer::$os_version['os'].' --version '.ConfigWServer::$os_version['version']);
 			$process->run();
 			
 			if (!$process->isSuccessful()) {
@@ -71,32 +71,6 @@ class ShowInfoSwitchClass extends ControllerSwitchClass {
 		
 		}
 		
-	
-	}
-	
-	/**
-	* This method is used for create a new server.
-	*
-	*/
-	
-	public function configure_server()
-	{
-	
-		//Se ejecuta el daemon php
-	
-		$process = new Process('python3 '.PhangoVar::$base_path.'modules/wserver2/controllers/python.py');
-		
-		$process->start();
-		
-		//Write in a file that is loaded by 
-		
-		/*$process->wait(function ($type, $buffer) {
-			if (Process::ERR === $type) {
-				echo 'ERR > '.$buffer;
-			} else {
-				echo 'OUT > '.$buffer;
-			}
-		});*/
 	
 	}
 

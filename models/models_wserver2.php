@@ -19,6 +19,8 @@ class ConfigWServer {
 
 	static public $arr_server=array();
 	
+	static public $os_version=array('os' => 'debian', 'version' => 'wheezy');
+	
 	static public $verify_guzzle_ssl=false;
 	
 }
