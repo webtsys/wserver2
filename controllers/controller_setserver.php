@@ -12,7 +12,7 @@ class SetServerSwitchClass extends ControllerSwitchClass {
 		*
 		*/
 
-	public function index()
+	public function index($token, $server_type, $server_to_create)
 	{
 		
 		
@@ -33,6 +33,11 @@ class SetServerSwitchClass extends ControllerSwitchClass {
 				echo 'OUT > '.$buffer;
 			}
 		});*/
+		
+		$json['error']=1;
+		$json['error_txt']='Error';
+		
+		echo json_encode($json);
 	
 		
 	}
